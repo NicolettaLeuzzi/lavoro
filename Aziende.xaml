@@ -1,0 +1,113 @@
+<Window xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"  
+        xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"  
+        xmlns:telerikData="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Data"  
+        xmlns:my="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView"  
+        x:Class="Votazioni.Aziende"
+        xmlns:local="clr-namespace:Votazioni"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Aziende" Height="768" Width="1024" Loaded="Window_Loaded" WindowState="Maximized" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="988">
+                <Button Name="Aggiungi"  Margin="3,3,0,0" Style="{StaticResource newButton}"  Content="Aggiungi" Width="75" Height="26" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Click="Aggiungi_Click"></Button>
+                <Button Name="Elimina"  Margin="3,3,0,0" Style="{StaticResource delButton}"   Content="Elimina" Width="67" HorizontalAlignment="Right" Height="26" VerticalAlignment="Bottom" Click="Elimina_Click"></Button>
+                <Button Name="Dimensione"  Margin="3,3,0,0" Style="{StaticResource cuboButton}"   Content="Dimensione" Width="90" HorizontalAlignment="Right" Height="26" VerticalAlignment="Bottom" Click="Dimensione_Click"></Button>
+                <Button Name="ModificaLR"  Margin="3,3,0,0" Style="{StaticResource editButton}"   Content="Legale Rappresentante" Width="138" HorizontalAlignment="Right" Height="26" VerticalAlignment="Bottom" Click="Legale_Click"></Button>
+                <Button Name="Moroso"  Margin="3,3,0,0" Style="{StaticResource stornoButton}"   Content="Gestione Moroso" Width="111" HorizontalAlignment="Right" Height="26" VerticalAlignment="Bottom" Click="Moroso_Click"></Button>
+                <Button Name="Delega"  Margin="3,3,0,0" Style="{StaticResource mailButton}"   Content="Delega" Width="70" HorizontalAlignment="Right" Height="26" VerticalAlignment="Bottom" Click="Delega_Click"></Button>
+                <Button Name="Stampa"  Margin="3,3,0,0" Style="{StaticResource StampaButton}"  Content="Stampa Convocazioni" Width="130" HorizontalAlignment="Right" Height="26" VerticalAlignment="Bottom" Click="StampaConvocazioni_Click"></Button>
+                <Button Name="Stampa2"  Margin="3,3,0,0" Style="{StaticResource StampaButton}"  Content="Stampa Convocazioni e Schede" Width="172" HorizontalAlignment="Right" Height="26" VerticalAlignment="Bottom" Click="StampaConvocazionieSchede_Click"></Button>
+                <StackPanel Margin="3,3,0,0" Width="87" HorizontalAlignment="Left">
+                    <telerikInput:RadComboBox Margin="0,2" x:Name="ComboBox1" SelectedIndex="0">
+                        <telerikInput:RadComboBoxItem Content="Excel"  />
+                        <telerikInput:RadComboBoxItem Content="ExcelML" />
+                        <telerikInput:RadComboBoxItem Content="Word" />
+                        <telerikInput:RadComboBoxItem Content="Csv"  />
+                    </telerikInput:RadComboBox >
+                    <Button Name="Esporta"  Margin="0,3,0,0" Style="{StaticResource salvaParzialeButton}"   Content="Esporta" Width="83" Height="26" Click="Button_Click"></Button>
+                </StackPanel>
+                <TextBox Height="23" Name="x" Width="34" Visibility="Hidden"/>
+                <TextBox Height="23" Name="y" Width="24" Visibility="Hidden"/>
+            </StackPanel>
+            <my:RadGridView Margin="10,10,10,0"  Name="RadGridAziende"  AutoGenerateColumns="False" 
+                                  CanUserInsertRows="True"
+                                  ShowGroupPanel="False" 
+                                  ElementExporting="RadGridAziende_ElementExporting"
+                                  Height="500px" 
+                                  Width="Auto" IsReadOnly="True" SelectionMode="Single" 
+                                  DataContext="{Binding}">
+                <my:RadGridView.Columns>
+                    <my:GridViewDynamicHyperlinkColumn IsVisible="False"></my:GridViewDynamicHyperlinkColumn>
+                    <my:GridViewDataColumn Width="80" UniqueName="VOT_CODICE_AZIENDA" Header="Codice"  DataMemberBinding="{Binding VOT_CODICE_AZIENDA}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="150" UniqueName="VOT_RAGSOC" Header="Ragione Sociale"  DataMemberBinding="{Binding VOT_RAGSOC}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="150" UniqueName="DescGruppo" Header="Gruppo"  DataMemberBinding="{Binding DescGruppo}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="150" UniqueName="VOT_DESC_SEZIONE" Header="Sezione"  DataMemberBinding="{Binding VOT_DESC_SEZIONE}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="250" UniqueName="LegaleRappresentante" Header="Legale Rapr."  DataMemberBinding="{Binding LegaleRappresentante}" IsReadOnly="True"  />   
+                    <my:GridViewDataColumn Width="80" UniqueName="VOT_VOTI_SPETTANTI" Header="Voti Spet."  DataMemberBinding="{Binding VOT_VOTI_SPETTANTI}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="200" UniqueName="VOT_INDIRIZZO" Header="Indirizzo"  DataMemberBinding="{Binding VOT_INDIRIZZO}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="100" UniqueName="VOT_LOCALITA" Header="Località"  DataMemberBinding="{Binding VOT_LOCALITA}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="60" UniqueName="VOT_CAP" Header="CAP"  DataMemberBinding="{Binding VOT_CAP}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="60" UniqueName="VOT_PROVINCIA" Header="Provincia"  DataMemberBinding="{Binding VOT_PROVINCIA}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="100" UniqueName="VOT_TELEFONO" Header="Telefono"  DataMemberBinding="{Binding VOT_TELEFONO}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="100" UniqueName="VOT_FAX" Header="Fax"  DataMemberBinding="{Binding VOT_FAX}" IsReadOnly="True"  />
+
+                    <my:GridViewDataColumn Width="100" UniqueName="VOT_CLASS_DIMENSIONE" Header="Piccola/Grande"  DataMemberBinding="{Binding VOT_CLASS_DIMENSIONE}" IsReadOnly="True"  />
+
+                    <my:GridViewDataColumn Width="100" UniqueName="VOT_CONTR_DOVUTI" Header="Contr.Dovuti"  DataMemberBinding="{Binding VOT_CONTR_DOVUTI}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="100" UniqueName="VOT_CONTR_PAGATI" Header="Contr.Pagati"  DataMemberBinding="{Binding VOT_CONTR_PAGATI}" IsReadOnly="True"  />
+                    <my:GridViewDataColumn Width="80" UniqueName="VOT_FLAG_MOROSO" Header="Moroso"  DataMemberBinding="{Binding VOT_FLAG_MOROSO}" >                      
+                        <my:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding VOT_FLAG_MOROSO}" IsEnabled="False" />
+                            </DataTemplate>
+                        </my:GridViewDataColumn.CellTemplate>
+                    </my:GridViewDataColumn>
+                    <my:GridViewDataColumn Width="80" UniqueName="VOT_FLAG_CHIUDIUNOCCHIO" Header="Trascura Moroso"  DataMemberBinding="{Binding VOT_CHIUDIUNOCCHIO}" >
+                        <my:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding VOT_CHIUDIUNOCCHIO}" IsEnabled="False" />
+                            </DataTemplate>
+                        </my:GridViewDataColumn.CellTemplate>
+                    </my:GridViewDataColumn>
+                    <my:GridViewDataColumn Width="80" UniqueName="VOT_FORZATO_MOROSO" Header="Forza a Moroso"  DataMemberBinding="{Binding VOT_FORZATO_MOROSO}" >
+                    <my:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                                <CheckBox IsChecked="{Binding VOT_FORZATO_MOROSO}" IsEnabled="False" />
+                        </DataTemplate>
+                    </my:GridViewDataColumn.CellTemplate>
+                    </my:GridViewDataColumn>
+                    <my:GridViewDataColumn Width="200" UniqueName="AZIENDA_DELEGATA" Header="Azienda Delegata"  DataMemberBinding="{Binding AZIENDA_DELEGATA}" />
+
+
+                    <my:GridViewDataColumn Width="80" UniqueName="VOT_CONSEGNATO" Header="Presente"  DataMemberBinding="{Binding VOT_CONSEGNATO}" >
+                        <my:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding VOT_CONSEGNATO}" IsEnabled="False" />
+                            </DataTemplate>
+                        </my:GridViewDataColumn.CellTemplate>
+                    </my:GridViewDataColumn>
+                    <my:GridViewDataColumn Width="100" UniqueName="VOT_CONSEGNATO_DESCRIZIONE" Header="Inv. Presente"  DataMemberBinding="{Binding VOT_CONSEGNATO_DESCRIZIONE}" />
+
+                </my:RadGridView.Columns>
+            </my:RadGridView>
+
+            <telerikData:RadDataPager x:Name="dataPager"
+								   PageSize="15"
+								   Source="{Binding Items, ElementName=RadGridAziende}"
+								   DisplayMode="All"
+								   AutoEllipsisMode="Both"
+								   NumericButtonCount="10"
+								   IsTotalItemCountFixed="True"
+								   Margin="10,0,10,0" /> 
+
+
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10" HorizontalAlignment="Right" FlowDirection="RightToLeft">
+                <Button Name="OK" FlowDirection="LeftToRight" Style="{StaticResource exitButton}"  Content="Esci" Width="75" Height="26" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Click="OK_Click"></Button>
+            </StackPanel>
+            
+        </StackPanel>
+        
+
+    </Grid>
+</Window>
