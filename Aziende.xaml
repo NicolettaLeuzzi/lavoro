@@ -1,7 +1,7 @@
 <Window xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"  
         xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"  
         xmlns:telerikData="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Data"  
-        xmlns:my="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView"  
+        xmlns:my="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView" 
         x:Class="Votazioni.Aziende"
         xmlns:local="clr-namespace:Votazioni"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
